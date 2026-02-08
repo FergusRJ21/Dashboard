@@ -1,0 +1,765 @@
+/* Importa a fonte 'Manrope' do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --color-primary: #369FFF;
+    --color-dark: #191919;
+    --color-light: #f7f7f7;
+    --color-white: #ffffff;
+    --color-gray: #BDBDBD;
+    --sidebar-width: 250px; /* Variável para largura da sidebar */
+}
+
+*{
+    margin: 0; /* Remove margens padrão de todos os elementos */
+    padding: 0; /* Remove preenchimento padrão */
+    box-sizing: border-box; /* Garante que padding não aumente o tamanho total dos elementos */
+    font-family: 'Manrope', sans-serif; /* Define a fonte padrão */
+}
+
+a{
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: #369FFF; /* Define a cor azul para os links */
+}
+
+i{
+    font-size: 24px; /* Define o tamanho padrão dos ícones */
+}
+
+.container{
+    display: grid; /* Usa Grid Layout para o container principal */
+    grid-template-columns: 1fr 3fr 2fr; /* Define 3 colunas (embora o HTML pareça usar só 2 áreas principais, Left e Main) */
+    height: 100vh; /* Ocupa 100% da altura da tela */
+}
+
+.container .left-section{
+    display: flex; /* Usa Flexbox para organizar a lateral */
+    flex-direction: column; /* Organiza os itens um abaixo do outro */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: space-between; /* Espalha o conteúdo verticalmente */
+    padding: 40px 0; /* Espaçamento interno vertical */
+}
+
+.container .left-section .logo{
+    display: flex; /* Flexbox para alinhar logo e texto */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 10px; /* Espaço entre ícone e texto */
+}
+
+.container .left-section .logo img{
+    width: 40px; /* Largura da imagem do logo */
+    height: 40px; /* Altura da imagem */
+    object-fit: cover; /* Ajusta a imagem sem distorcer */
+    border-radius: 100px; /* Deixa a imagem redonda */
+    border: 1px solid #fff; /* Borda branca fina */
+}
+
+.container .left-section .logo a{
+    font-weight: 800; /* Texto bem negrito */
+    font-size: 20px; /* Tamanho da fonte */
+    color: #006ED3; /* Cor azul escura */
+}
+
+.menu-btn{
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border: none; /* Sem borda */
+    background-color: #D1E6F9; /* Fundo azul claro */
+    border-radius: 6px; /* Cantos arredondados */
+    cursor: pointer; /* Muda cursor para mãozinha */
+    display: none; /* Oculto por padrão (aparece no mobile geralmente) */
+}
+
+.menu-btn i{
+    font-size: 18px; /* Tamanho do ícone do botão */
+    color: #208BEE; /* Cor do ícone */
+}
+
+.container .left-section .sidebar{
+    display: flex;
+    flex-direction: column; /* Itens do menu em coluna */
+    gap: 20px; /* Espaço entre itens do menu */
+}
+
+.container .left-section .sidebar .item{
+    display: flex;
+    gap: 20px; /* Espaço entre ícone e texto do link */
+    cursor: pointer;
+}
+
+.container .left-section .sidebar i{
+    color: #BDBDBD; /* Cor cinza para ícones inativos */
+    transition: all 0.3s ease; /* Animação suave na mudança de cor */
+}
+
+.container .left-section .sidebar a{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 14px;
+    color: #BDBDBD; /* Cor cinza para texto inativo */
+    position: relative; /* Necessário para posicionar o pseudo-elemento ::after */
+    transition: all 0.3s ease; /* Animação suave */
+}
+
+/* Estilos para o item ativo do menu e hover */
+.container .left-section .sidebar .item#active a,
+.container .left-section .sidebar .item#active i,
+.container .left-section .upgrade .link i{
+    color: #369FFF; /* Muda a cor para azul quando ativo */
+}
+
+/* Cria a bolinha azul ao lado do menu ativo (estado inicial invisível) */
+.container .left-section .sidebar .item a::after{
+    position: absolute;
+    content: ''; /* Elemento vazio */
+    width: 0px; /* Começa sem tamanho */
+    height: 0px;
+    background-color: #369FFF; /* Cor azul */
+    right: -30px; /* Posicionado à direita */
+    border-radius: 50%; /* Redondo */
+    top: 0;
+    transform: translateY(116%); /* Ajuste vertical */
+    transition: all 0.3s ease; /* Animação suave */
+}
+
+/* Mostra a bolinha azul quando o item tem ID 'active' */
+.container .left-section .sidebar .item#active a::after{
+    width: 8px;
+    height: 8px;
+}
+
+.container .left-section .pic img{
+    width: 160px; /* Tamanho da imagem de destaque na sidebar */
+}
+
+.container .left-section .upgrade{
+    background: #EBF6FF; /* Fundo azul bem claro */
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 24px;
+    margin-bottom: 20px;
+    border-radius: 18px; /* Bordas arredondadas */
+    cursor: pointer;
+}
+
+.container .left-section .upgrade .link{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Texto e seta nos extremos */
+}
+
+.container .left-section .upgrade .link a{
+    font-size: 12px;
+}
+
+main{
+    border-right: 2px solid #F0F0F0; /* Linha divisória direita */
+    border-left: 2px solid #F0F0F0; /* Linha divisória esquerda */
+    padding: 40px 40px 0 40px; /* Espaçamento interno */
+}
+
+main header{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+main header h5{
+    font-size: 18px;
+    color: #369FFF;
+    font-weight: 400; /* Peso da fonte normal */
+}
+
+main .separator{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Separa título e busca */
+    margin-top: 20px;
+}
+
+main .separator .info{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+main .separator .info h3{
+    font-size: 30px;
+}
+
+main .separator .info a{
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+main .separator .search{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+main .separator .search i{
+    font-size: 20px;
+    color: #BDBDBD;
+}
+
+main .separator .search input{
+    border: none;
+    font-size: 14px;
+    width: 80px;
+    outline: none; /* Remove contorno ao clicar */
+}
+
+main .separator .search input::placeholder{
+    color: #BDBDBD; /* Cor do texto de exemplo */
+}
+
+main .analytics{
+    display: grid; /* Grid para os cards coloridos */
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 20px; /* Espaço entre cards */
+    margin-top: 20px;
+}
+
+main .analytics .item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 140px;
+    min-width: 214px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+main .analytics .item .progress{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main .analytics .item .progress .info h5{
+    color: #fff; /* Texto branco */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+main .analytics .item .progress .info p{
+    color: #fff;
+    font-size: 12px;
+}
+
+main .analytics .item .progress .progress-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%; /* Faz o elemento ser um círculo */
+}
+
+/* Configuração dos gradientes para criar o efeito de gráfico de pizza */
+main .analytics .item:nth-child(1) .progress .progress-bar{
+    background: radial-gradient(closest-side, #006ED3 79%, transparent 80% 100%), conic-gradient(#208BEE 25%, #fff 0%);
+}
+
+main .analytics .item:nth-child(2) .progress .progress-bar{
+    background: radial-gradient(closest-side, #FF993A 79%, transparent 80% 100%), conic-gradient(#FF7E07 50%, #fff 0%);
+}
+
+main .analytics .item:nth-child(3) .progress .progress-bar{
+    background: radial-gradient(closest-side, #8AC53E 79%, transparent 80% 100%), conic-gradient(#6EB33D 75%, #fff 0%);
+}
+
+main .analytics .item:nth-child(4) .progress .progress-bar{
+    background: radial-gradient(closest-side, #FFD043 79%, transparent 80% 100%), conic-gradient(#FFC000 25%, #fff 0%);
+}
+
+main .analytics .item .progress .progress-bar::before{
+    font-size: 10px;
+    color: #fff;
+}
+
+/* Adiciona o texto de porcentagem dentro dos círculos via CSS */
+main .analytics .item:nth-child(1) .progress .progress-bar::before,
+main .analytics .item:nth-child(4) .progress .progress-bar::before{
+    content: '75%';
+}
+
+main .analytics .item:nth-child(2) .progress .progress-bar::before{
+    content: '50%';
+}
+
+main .analytics .item:nth-child(3) .progress .progress-bar::before{
+    content: '25%';
+}
+
+main .analytics .item i{
+    font-size: 80px;
+    color: #fff;
+}
+
+/* Cores de fundo de cada card específico */
+main .analytics .item:nth-child(1){
+    background: #006ED3;
+}
+
+main .analytics .item:nth-child(2){
+    background: #FF993A;
+}
+
+main .analytics .item:nth-child(3){
+    background: #8AC53E;
+}
+
+main .analytics .item:nth-child(4){
+    background: #FFD043;
+}
+
+main .separator input{
+    border: none;
+    color: #369FFF;
+    font-weight: bold;
+    outline: none;
+    width: 100px;
+}
+
+/* Estiliza o ícone do calendário padrão do navegador */
+input[type="date"]::-webkit-calendar-picker-indicator{
+    opacity: 0.5;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+main .planning{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+main .planning .item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #F7F7F7; /* Fundo cinza claro */
+    border-radius: 20px;
+}
+
+main .planning .item .left{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+main .planning .item .left .icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cores de fundo dos ícones da lista de planejamento */
+main .planning .item:nth-child(1) .left .icon{
+    background: #D1E6F9;
+}
+
+main .planning .item:nth-child(1) .left .icon i{
+    color: #369FFF;
+}
+
+main .planning .item:nth-child(2) .left .icon{
+    background: #F9E5D2;
+}
+
+main .planning .item:nth-child(2) .left .icon i{
+    color: #FF993A;
+}
+
+main .planning .item:nth-child(3) .left .icon{
+    background: #E2EDD2;
+}
+
+main .planning .item:nth-child(3) .left .icon i{
+    color: #8AC53E;
+}
+
+main .planning .item:nth-child(4) .left .icon{
+    background: #F9F0D3;
+}
+
+main .planning .item:nth-child(4) .left .icon i{
+    color: #FFD143;
+}
+
+/* CORREÇÃO AQUI: "deails" corrigido para "details" */
+main .planning .item .left .details h5{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* CORREÇÃO AQUI: "deails" corrigido para "details" */
+main .planning .item .left .details p{
+    font-size: 12px;
+    color: #BDBDBD;
+}
+
+main .planning .item > i{
+    cursor: pointer;
+}
+
+.container .right-section{
+    padding: 40px 40px 0 40px;
+}
+
+.container .right-section .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container .right-section .top > i{
+    color: #909090;
+    position: relative;
+    cursor: pointer;
+}
+
+.container .right-section .top > i::after{
+    content: '';
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    background: #EB5757;
+    border-radius: 50%;
+    right: 0;
+}
+
+.container .right-section .top .profile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: #EBF6FF;
+    width: 244px;
+    height: 60px;
+    border-radius: 16px;
+}
+
+.container .right-section .top .profile > i{
+    cursor: pointer;
+}
+
+.container .right-section .top .profile .left{
+    display: flex;
+    gap: 15px;
+}
+
+
+.container .right-section .top .profile .left img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.container .right-section .top .profile .left .user h5{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.container .right-section .top .profile .left .user a{
+    font-size: 12px;
+}
+
+.container .right-section .separator#first{
+    margin-top: 8px;
+}
+
+.container .right-section .separator h4{
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.container .right-section .stats{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.container .right-section .stats .item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 190px;
+    padding: 25px;
+    background: #EBF6FF;
+    border-radius: 20px;
+}
+
+
+.container .right-section .stats .item .top{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.container .right-section .stats .top p{
+    font-size: 16px;
+    color: #8EA3B7;
+    font-weight: 500;
+}
+
+.container .right-section .stats .item .bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container .right-section .stats .item .bottom .line{
+    width: 4px;
+    height: 30px;
+    background: #369FFF;
+    border-radius: 20px;
+}
+
+.container .right-section .stats .item .bottom h3{
+    font-size: 40px;
+    color: #006ED3;
+}
+
+.container .right-section .weekly{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px;
+    background: #F7F7F7;
+    border-radius: 16px;
+}
+
+.container .right-section .weekly .title{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.container .right-section .weekly .title .line{
+    width: 6px;
+    height: 50px;
+    background: #006ED3;
+    border-radius: 20px;
+}
+
+.container .right-section .weekly h5{
+    font-size: 16px;
+}
+
+.container .right-section .weekly .progress-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, #f7f7f7 79%, transparent 80% 100%), conic-gradient(#CCC 25%, #006ED3 0%);
+}
+
+.container .right-section .weekly .progress-bar::before{
+    content: "3/4";
+    font-size: 14px;
+    color: #000;
+}
+
+@media screen and (max-width: 1200px){
+    .container{
+        grid-template-columns: 1fr 6fr 5fr;
+    }
+
+    .container .left-section,
+    .container main,
+    .container .right-section{
+        padding: 20px 20px 0 20px;
+    }
+
+    .container .left-section .logo a,
+    .container .left-section .sidebar a,
+    .container .left-section .pic img,
+    .container .left-section .upgrade{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 992px){
+    .container{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .container .left-section{
+        position: fixed;
+        height: 60vh;
+        background-color: #fff;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        top: -60vh;
+    }
+
+    .container .left-section .logo{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .container .left-section .logo .menu-btn,
+    main header .menu-btn{
+        display: flex;
+    }
+
+    main h5{
+        font-size: 16px;
+    }
+
+    main .separator .info{
+        gap: 15px;
+    }
+
+    main .separator .info h3,
+    .container .right-section .separator h4{
+        font-size: 20px;
+    }
+
+    main .analytics .item{
+        min-width: 160px;
+    }
+    
+    main .analytics .item i{
+        display: none;
+    }
+
+    main .planning{
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    main .planning .item{
+        padding: 8px;
+    }
+
+    .container .right-section .stats .item{
+        height: 160px;
+        padding: 20px;
+    }
+
+    .container .right-section .stats .item .top p{
+        font-size: 14px;
+    }
+
+    .container .right-section .stats .item .bottom h3{
+        font-size: 36px;
+    }
+
+}
+
+
+
+
+/* =========================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================= */
+
+/* Tablets e Notebooks Pequenos (max-width: 1200px) */
+@media screen and (max-width: 1200px) {
+    .container {
+        /* Muda para 2 colunas: Sidebar | Resto */
+        grid-template-columns: 80px auto; 
+    }
+    
+    /* Recolhe a Sidebar apenas para ícones */
+    .container .left-section { padding: 20px 5px; }
+    .container .left-section .logo a, 
+    .container .left-section .sidebar a::after, /* remove bolinha */
+    .container .left-section .sidebar a span, /* Se houver texto num span */
+    .container .left-section .upgrade,
+    .container .left-section .pic {
+        display: none; /* Esconde textos e imagens grandes */
+    }
+    
+    .container .left-section .sidebar { padding-left: 0; align-items: center; }
+    .container .left-section .sidebar a { justify-content: center; width: auto; padding: 0; }
+    
+    /* Ajusta seção direita para ir para baixo ou ficar fluida */
+    .right-section { display: none; /* Opcional: ou movemos para baixo via JS, ou escondemos em tablets pequenos */ }
+    /* NOTA: Para manter visível em 1 coluna, teríamos que mudar o HTML order, 
+       mas vamos assumir layout mobile para tablets menores abaixo */
+}
+
+/* Tablets Menores e Celulares (max-width: 992px) */
+@media screen and (max-width: 992px) {
+    .container {
+        /* 1 Coluna única */
+        grid-template-columns: 1fr;
+    }
+
+    /* Menu Lateral vira "Gaveta" (Drawer) */
+    .container .left-section {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Começa escondido à esquerda */
+        width: 250px;
+        height: 100vh;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+        align-items: flex-start;
+        padding: 20px;
+        background: #fff;
+    }
+    
+    /* Quando ativo (classe adicionada via JS) */
+    .container .left-section.show {
+        left: 0;
+    }
+
+    /* Reexibe os itens da sidebar que sumiram no tablet */
+    .container .left-section .logo a, 
+    .container .left-section .upgrade,
+    .container .left-section .pic { display: flex; }
+    .container .left-section .sidebar { align-items: flex-start; padding-left: 20px; }
+
+    /* Botão Menu aparece */
+    .menu-btn { display: block; }
+    .logo .menu-btn { display: flex; margin-right: auto; } /* Botão de fechar dentro do menu */
+    
+    /* Ajuste do Header */
+    main header { gap: 15px; }
+
+    /* Seção Direita reaparece abaixo do Main */
+    .right-section { display: block; padding: 20px; }
+    .right-section .top { justify-content: space-between; }
+}
+
+/* Celulares Pequenos (max-width: 600px) */
+@media screen and (max-width: 600px) {
+    main { padding: 15px; }
+    
+    /* Analíticos em 1 coluna */
+    main .analytics { grid-template-columns: 1fr; }
+    
+    /* Stats em 1 coluna */
+    .right-section .stats { grid-template-columns: 1fr; }
+    .right-section .stats .item { height: 120px; flex-direction: row; align-items: center; }
+    .right-section .stats .item .bottom { margin-top: 0; }
+    
+    /* Ajuste de fontes */
+    main .separator .info h3 { font-size: 1.2rem; }
+    main .separator .search input { width: 100px; }
+}
