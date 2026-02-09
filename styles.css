@@ -26,10 +26,13 @@ i{
     font-size: 24px; /* Define o tamanho padrão dos ícones */
 }
 
-.container{
-    display: grid; /* Usa Grid Layout para o container principal */
-    grid-template-columns: 1fr 3fr 2fr; /* Define 3 colunas (embora o HTML pareça usar só 2 áreas principais, Left e Main) */
-    height: 100vh; /* Ocupa 100% da altura da tela */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr;
+    /* ALTERAÇÃO IMPORTANTE AQUI: */
+    grid-template-rows: 1fr auto; /* 1fr para o conteúdo, auto para o footer */
+    min-height: 100vh; /* Garante altura mínima, mas deixa crescer */
+    height: auto; /* Remove a altura fixa para evitar cortes no mobile */
 }
 
 .container .left-section{
@@ -764,34 +767,51 @@ main .planning .item > i{
     main .separator .search input { width: 100px; }
 }
 
-.container footer {
-    margin-top: 40px; /* Empurra o rodapé para baixo */
-    padding: 20px 0; /* Espaço interno */
-    text-align: center; /* Centraliza o texto */
-    border-top: 1px solid #F0F0F0; /* Linha divisória suave no topo */
+
+footer {
+    grid-column: 1 / -1; /* Faz o footer ocupar todas as colunas do Grid */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #fff; /* Garante fundo branco para não misturar */
+    border-top: 1px solid #F0F0F0;
+    width: 100%;
+    margin-top: auto; /* Garante que fique no fundo se o conteúdo for curto */
 }
 
-.container footer p {
+footer p {
     font-size: 14px;
-    color: #BDBDBD; /* Cor cinza suave para o texto */
+    color: #BDBDBD;
     font-weight: 500;
+    text-align: center;
 }
 
-.container footer p a {
-    color: var(--color-primary); /* Usa a cor azul definida no :root (#369FFF) */
-    font-weight: 700; /* Deixa o nome "Fergus" mais grosso */
+footer p a {
+    color: var(--color-primary);
+    font-weight: 700;
     transition: all 0.3s ease;
 }
 
-.container footer p a:hover {
-    color: #006ED3; /* Um azul mais escuro ao passar o mouse */
-    text-decoration: underline; /* Sublinha ao passar o mouse */
+footer p a:hover {
+    color: #006ED3;
+    text-decoration: underline;
 }
 
-/* Ajuste Responsivo para o Footer */
+/* Ajuste para Tablets e Celulares */
 @media screen and (max-width: 992px) {
-    .container footer {
-        margin-top: 20px;
-        font-size: 12px;
+    .container {
+        /* No mobile, usamos 1 coluna para tudo */
+        grid-template-columns: 1fr;
+        /* Mantemos as linhas: Conteúdo em cima, Footer em baixo */
+        grid-template-rows: auto 1fr auto; 
+    }
+
+    footer {
+        padding: 15px; /* Padding um pouco menor no mobile */
+    }
+    
+    footer p {
+        font-size: 12px; /* Fonte ligeiramente menor */
     }
 }
