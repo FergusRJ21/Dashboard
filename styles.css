@@ -763,3 +763,35 @@ main .planning .item > i{
     main .separator .info h3 { font-size: 1.2rem; }
     main .separator .search input { width: 100px; }
 }
+
+.container footer {
+    margin-top: 40px; /* Empurra o rodapé para baixo */
+    padding: 20px 0; /* Espaço interno */
+    text-align: center; /* Centraliza o texto */
+    border-top: 1px solid #F0F0F0; /* Linha divisória suave no topo */
+}
+
+.container footer p {
+    font-size: 14px;
+    color: #BDBDBD; /* Cor cinza suave para o texto */
+    font-weight: 500;
+}
+
+.container footer p a {
+    color: var(--color-primary); /* Usa a cor azul definida no :root (#369FFF) */
+    font-weight: 700; /* Deixa o nome "Fergus" mais grosso */
+    transition: all 0.3s ease;
+}
+
+.container footer p a:hover {
+    color: #006ED3; /* Um azul mais escuro ao passar o mouse */
+    text-decoration: underline; /* Sublinha ao passar o mouse */
+}
+
+/* Ajuste Responsivo para o Footer */
+@media screen and (max-width: 992px) {
+    .container footer {
+        margin-top: 20px;
+        font-size: 12px;
+    }
+}
